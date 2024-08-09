@@ -130,7 +130,7 @@ autoPatchBinary()
 
 # Parse valid command-line options
 
-PARAMS=`getopt -n $0 -o h -l no-recurse,variable:,help -- "$@"`
+PARAMS=`a/bin/getopt -n $0 -o h -l no-recurse,variable:,help -- "$@"`
 
 if [ $? != 0 ]
 then
@@ -181,7 +181,7 @@ then
 
     find "$pathParam" $findParam -type f | while read binary
     do
-        if file $binary | grep -q "^$binary: ELF"
+        if a/bin/file $binary | grep -q "^$binary: ELF"
         then
             autoPatchBinary "$binary" "$searchPathVariable"
         fi
